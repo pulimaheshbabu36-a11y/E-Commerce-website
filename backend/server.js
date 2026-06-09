@@ -33,7 +33,7 @@ app.use("/api/payment", paymentRoutes);
 // =======================
 // DATABASE CONNECTION
 // =======================
-mongoose.connect("mongodb+srv://admin:mahesh123@cluster0.jinw279.mongodb.net/ecommerce?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://admin:Mahesh123@cluster0.jinw279.mongodb.net/ecommerce?retryWrites=true&w=majority")
 
 // =======================
 // HOME ROUTE
