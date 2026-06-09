@@ -6,62 +6,55 @@
 </head>
 <body>
 
-    <h1>Create Account</h1>
+<nav>
+    <h2>🛒 My E-Commerce Store</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Login</a>
+    </div>
+</nav>
 
-    <input
-        type="text"
-        id="name"
-        placeholder="Full Name">
+<h1>Create Account</h1>
 
-    <br><br>
+<input type="text" id="name" placeholder="Full Name">
+<br><br>
 
-    <input
-        type="email"
-        id="email"
-        placeholder="Email">
+<input type="email" id="email" placeholder="Email">
+<br><br>
 
-    <br><br>
+<input type="password" id="password" placeholder="Password">
+<br><br>
 
-    <input
-        type="password"
-        id="password"
-        placeholder="Password">
+<button onclick="register()">Register</button>
 
-    <br><br>
+<br><br>
 
-    <button onclick="register()">
-        Register
-    </button>
+<a href="login.html">Already have an account? Login</a>
 
-    <br><br>
+<script>
+async function register() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-    <a href="login.html">
-        Already have an account? Login
-    </a>
+    if (!name || !email || !password) {
+        alert("Please fill all fields");
+        return;
+    }
 
-    <script>
-    async function register() {
-
-        const name =
-            document.getElementById("name").value;
-
-        const email =
-            document.getElementById("email").value;
-
-        const password =
-            document.getElementById("password").value;
-
+    try {
         const response = await fetch(
-            "http://localhost:5000/api/auth/register",
+            "https://e-commerce-website-d28h.onrender.com/api/auth/register",
             {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    name,
-                    email,
-                    password
+                    name: name,
+                    email: email,
+                    password: password
                 })
             }
         );
@@ -72,10 +65,15 @@
             alert("Registration Successful");
             window.location.href = "login.html";
         } else {
-            alert(data.message);
+            alert(data.message || "Registration failed");
         }
+
+    } catch (error) {
+        console.log(error);
+        alert("Server Error. Please try again.");
     }
-    </script>
+}
+</script>
 
 </body>
 </html>
