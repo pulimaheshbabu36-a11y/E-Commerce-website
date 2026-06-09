@@ -33,13 +33,7 @@ app.use("/api/payment", paymentRoutes);
 // =======================
 // DATABASE CONNECTION
 // =======================
-mongoose.connect("mongodb+srv://admin:YOUR_PASSWORD@cluster0.jinw279.mongodb.net/ecommerce?retryWrites=true&w=majority")
-.then(() => {
-    console.log("MongoDB Connected");
-})
-.catch((err) => {
-    console.log("MongoDB Connection Error:", err);
-});
+mongoose.connect("mongodb+srv://admin:mahesh123@cluster0.jinw279.mongodb.net/ecommerce?retryWrites=true&w=majority")
 
 // =======================
 // HOME ROUTE
