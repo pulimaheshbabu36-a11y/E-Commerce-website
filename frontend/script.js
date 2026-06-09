@@ -1,9 +1,14 @@
+const API_URL = "https://e-commerce-website-d28h.onrender.com";
+
 async function loadProducts() {
     try {
-        const response = await fetch("http://localhost:5000/api/products");
+        const response = await fetch(`${API_URL}/api/products`);
         const products = await response.json();
 
         const container = document.getElementById("products");
+
+        if (!container) return;
+
         container.innerHTML = "";
 
         products.forEach(product => {
@@ -34,7 +39,7 @@ async function loadProducts() {
 
 async function addToCart(productId) {
     try {
-        const response = await fetch("http://localhost:5000/api/cart", {
+        const response = await fetch(`${API_URL}/api/cart`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
